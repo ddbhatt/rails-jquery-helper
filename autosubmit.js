@@ -1,6 +1,7 @@
 /* 
 	AutoSubmit Parent Form on textbox keyup - Used for Ajax - Defined on form field
-	<%= text_field_tag ..., :'data-autosubmit' => 'keyup,change' %>
+	<%= text_field_tag ..., :'data-autosubmit' => 'keyup' %>
+	Used for Live Search and Filtering
 */
 $(function() { 
 	var target = $('*[data-autosubmit]');
@@ -13,7 +14,7 @@ $(function() {
 			$(objTarget).focus(function (event) {
 				$(this).select();	
 			});
-
+			$(objTarget).attr("autocomplete","off");
 		});
 	}
 });
