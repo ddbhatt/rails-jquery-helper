@@ -1,10 +1,19 @@
 /* 
-	Auto Submit Parent Form on textbox keyup - Used for Ajax - Defined on form field
-	<%= text_field_tag ..., :'data-autosubmit-on-keyup' => 'true' %>
+	AutoSubmit Parent Form on textbox keyup - Used for Ajax - Defined on form field
+	<%= text_field_tag ..., :'data-autosubmit' => 'keyup,change' %>
 */
 $(function() { 
-	$('*[data-autosubmit]').bind('keyup', function() {
-    	$(this).closest('form').delay(200).submit();
-    	return false;
-	});
+	var target = $('*[data-autosubmit]');
+	if (target.length > 0) {
+		target.each(function(index, objTarget) {
+			$(objTarget).bind($(objTarget).data('autosubmit') ,function() {
+				$(this).closest('form').delay().submit();
+				return false;
+			});
+			$(objTarget).focus(function (event) {
+				$(this).select();	
+			});
+
+		});
+	}
 });
