@@ -158,7 +158,6 @@ $(function() {
             }).focus(function (event) {
                 $(event.target).autocomplete("search");
             }).keydown(function (event) {
-                console.log('last field');
                 if (event.keyCode == 8 || event.keyCode == 13) {
                     performSearch = false; //do not perform the search
                 } else {
